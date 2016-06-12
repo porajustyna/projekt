@@ -1,9 +1,19 @@
 export default class HomeController {
-  constructor($scope, $firebaseArray) {
+  constructor($scope, $firebaseArray, $rootScope) {
    var  ref = new Firebase("https://projektangular1.firebaseio.com");
 $scope.lista = $firebaseArray (ref);
 
+ $rootScope.sprmail = false;
+
+
+$scope.zalogujsie = function() {
+    $rootScope.sprmail = true;
+
+};
+
+
 $scope.dodajtaska = function() {
+             if( $rootScope.sprmail === true){
               var message_ref = new Firebase('https://projektangular1.firebaseio.com/Zadania');
               var newMessageRef = message_ref.push();
               newMessageRef.set({
@@ -12,6 +22,11 @@ $scope.dodajtaska = function() {
                   'Status': 'w realizacji'
               
 });
+}
+else{
+    alert("Aby dodać zadanie musisz być zalogowany")
+}
+
 
 };
 
