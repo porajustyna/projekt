@@ -7,7 +7,9 @@ $scope.lista = $firebaseArray (ref);
 
 
 $scope.zalogujsie = function() {
+    $scope.emailwer=$scope.email;
     $rootScope.sprmail = true;
+    
 
 };
 
@@ -31,7 +33,7 @@ else{
 };
 
 $scope.doneTask = function(message) {
-    alert("cos")
+
             var ref = new Firebase('https://projektangular1.firebaseio.com/Zadania/' + message.$id)
             ref.update({
                 Status: 'Wykonane'
