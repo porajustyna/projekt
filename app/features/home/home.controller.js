@@ -30,5 +30,19 @@ else{
 
 };
 
+$scope.doneTask = function(message) {
+    alert("cos")
+            var ref = new Firebase('https://projektangular1.firebaseio.com/Zadania/' + message.$id)
+            ref.update({
+                Status: 'Wykonane'
+            });
+}
+
+ $scope.deleteTask= function(message) {
+$scope.lista.$remove(message)
+
+
+}
+
 }
 }
