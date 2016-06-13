@@ -18,8 +18,23 @@
       <ul class="list-group" >
         <li class="list-group-item clearfix task" ng-repeat="message in lista" > 
           <p class="lead">{{message.Tresc}}</p>
+          
+          
+          <div>
+            <span class="pull-right">
+        
+              <button class="btn btn-primary btn-xs" ><span class="glyphicon glyphicon-ok-sign" 
+                ng-click="doneTask($index)"></span></button>
+            
+              <button class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash" 
+                ng-click="deleteTask($index)"></span></button>
+            </span>
+            
+         </div>
+        
+          
         </li>
-</ul>
+       </ul>
 
 
     </div>
