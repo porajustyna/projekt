@@ -1,6 +1,6 @@
 export default class HomeController {
   constructor($scope, $firebaseArray, $rootScope) {
-   var  ref = new Firebase("https://projektangular1.firebaseio.com");
+   var  ref = new Firebase("https://projektangular1.firebaseio.com/Zadania");
 $scope.lista = $firebaseArray (ref);
 
  $rootScope.sprmail = false;
