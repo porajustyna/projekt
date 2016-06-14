@@ -1,11 +1,10 @@
-
 <body ng-app="app">
   
   <ng-view>
     
      <div style="padding-left: 2.8cm; padding-right:17.8cm">
  <div class="btn-group btn-group-justified">
-  <a href="#" class="btn btn-primary" ng-click="ListazadańFiltracja()" style=background:#FF00FF> Lista zadań  </a>
+  <a href="#" class="btn btn-primary" ng-click="ListazadanFiltracja()" style=background:#FF00FF> Lista zadań  </a>
   <a href="#" class="btn btn-primary" ng-click="ZatwierdzoneFiltracja()"style=background:#FF00FF> Zatwierdzone  </a>
   <a href="#" class="btn btn-primary" ng-click="DoZrobieniaFiltracja()"style=background:#FF00FF>Do zrobienia</a>
   
@@ -26,28 +25,64 @@
           </div>
 </div>
 
+     <div ng-show="wszystkie">
       <ul class="list-group" >
         <li class="list-group-item clearfix task" ng-repeat="message in lista" > 
           <p class="lead">{{message.Tresc}}</p>
-          
-          
-          <div>
-            
-<div ng-show="message.Email == emailwer">
-            <span class="pull-right">
-    
-              <button class="btn btn-primary btn-xs" ng-click="doneTask(message)" ><span class="glyphicon glyphicon-ok-sign" 
-            ></span></button>
-            
-              <button class="btn btn-danger btn-xs" ng-click="deleteTask(message)"><span class="glyphicon glyphicon-trash" 
+           <div>
+             <div ng-show="message.Email == emailwer">
+               <span class="pull-right">
+               <button class="btn btn-primary btn-xs" ng-show="message.Status != 'Wykonane'" ng-click="doneTask(message)" ><span class="glyphicon glyphicon-ok-sign" 
                ></span></button>
-            </span>
+               <button class="btn btn-danger btn-xs" ng-click="deleteTask(message)"><span class="glyphicon glyphicon-trash" 
+               ></span></button>
+               </span>
             </div>
          </div>
-        
-          <p class="lead"  style ="font-size:110%;"> {{message.Email}} <span class="glyphicon glyphicon-star"></span> {{message.Status}} </p>
+        <p class="lead"  style ="font-size:110%;"> {{message.Email}} <span class="glyphicon glyphicon-star"></span> {{message.Status}} </p>
         </li>
        </ul>
+       </div>
+       
+       
+    <div ng-show="dowykonania">
+      
+        <ul class="list-group">
+        <li class="list-group-item clearfix task" ng-repeat="message in lista  | filter : { Status : 'w realizacji' }" > 
+          <p class="lead">{{message.Tresc }}</p>
+          <div>
+            <div ng-show="message.Email == emailwer">
+            <span class="pull-right">
+                <button class="btn btn-primary btn-xs" ng-click="doneTask(message)" ><span class="glyphicon glyphicon-ok-sign" 
+                ></span></button>
+                <button class="btn btn-danger btn-xs" ng-click="deleteTask(message)"><span class="glyphicon glyphicon-trash" 
+                ></span></button>
+            </span>
+            </div>
+          </div>
+          <p class="lead"  style ="font-size:110%;"> {{message.Email}} <span class="glyphicon glyphicon-star"></span> {{message.Status}} </p>
+        </li>
+      </ul>
+</div>
+
+
+    <div ng-show="zrobione">
+      
+        <ul class="list-group">
+        <li class="list-group-item clearfix task" ng-repeat="message in lista  | filter : { Status : 'Wykonane' }" > 
+          <p class="lead">{{message.Tresc }}</p>
+          <div>
+            <div ng-show="message.Email == emailwer">
+            <span class="pull-right">
+                <button class="btn btn-danger btn-xs" ng-click="deleteTask(message)"><span class="glyphicon glyphicon-trash" 
+                ></span></button>
+            </span>
+            </div>
+          </div>
+          <p class="lead"  style ="font-size:110%;"> {{message.Email}} <span class="glyphicon glyphicon-star"></span> {{message.Status}} </p>
+        </li>
+      </ul>
+</div>
 
 
     </div>

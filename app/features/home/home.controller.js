@@ -4,17 +4,25 @@ export default class HomeController {
 $scope.lista = $firebaseArray (ref);
 
  $rootScope.sprmail = false;
-
+ $rootScope.FiltrEmail="";
+ 
+ 
+ 
+$rootScope.zrobione = false;
+$rootScope.wszystkie = true;
+$rootScope.dowykonania = false;
 
 $scope.zalogujsie = function() {
      var walidacja = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
       if ($scope.email == '' || !walidacja.test($scope.email)){
+          $rootScope.FiltrEmail = "";
     alert("Błąd ! Wpisz poprawny adres email");
    
 }
 else{
      $scope.emailwer=$scope.email;
     $rootScope.sprmail = true;
+     
     
 }
 
@@ -52,6 +60,29 @@ $scope.lista.$remove(message)
 
 
 }
+ $scope.ZatwierdzoneFiltracja = function() {
+            $rootScope.zrobione = true
+            $rootScope.wszystkie = false
+            $rootScope.dowykonania = false
 
+};
+
+ $scope.ListazadanFiltracja = function() {
+            $rootScope.zrobione = false
+            $rootScope.wszystkie = true
+            $rootScope.dowykonania = false
+            
+          
+
+};
+
+ $scope.DoZrobieniaFiltracja = function() {
+            $rootScope.zrobione = false
+            $rootScope.wszystkie = false
+            $rootScope.dowykonania = true
+            
+          
+
+};
 }
 }
