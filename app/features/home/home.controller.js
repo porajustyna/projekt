@@ -12,11 +12,13 @@ $rootScope.zrobione = false;
 $rootScope.wszystkie = true;
 $rootScope.dowykonania = false;
 
+
 $scope.zalogujsie = function() {
      var walidacja = /[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}/igm;
       if ($scope.email == '' || !walidacja.test($scope.email)){
           $rootScope.FiltrEmail = "";
     alert("Błąd ! Wpisz poprawny adres email");
+     $rootScope.sprmail = false;
    
 }
 else{
@@ -83,6 +85,15 @@ $scope.lista.$remove(message)
             
           
 
+};
+
+ $scope.Mojezad = function() {
+            $rootScope.FiltrEmail =$scope.email;
+            
+};
+
+ $scope.Zadaniawszy = function() {
+            $rootScope.FiltrEmail = "";
 };
 }
 }

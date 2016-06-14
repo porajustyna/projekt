@@ -2,11 +2,24 @@
   
   <ng-view>
     
-     <div style="padding-left: 2.8cm; padding-right:17.8cm">
+         
+     
+         
+   <div ng-show="sprmail==true">
+       <div style="padding-left: 2.8cm; padding-right:17.8cm">
+         <div class="btn-group btn-group-justified">
+          <a href="#" class="btn btn-primary" ng-click="Mojezad()" style=background:#00FFCC> Moje zdania  </a>
+          <a href="#" class="btn btn-primary" ng-click="Zadaniawszy()"style=background:#00FFCC> Zadania wszystkich  </a>
+      </div>
+      </div>
+</div>
+         
+         
+     <div style="padding-left: 2.8cm; padding-right:17.8cm">      
  <div class="btn-group btn-group-justified">
-  <a href="#" class="btn btn-primary" ng-click="ListazadanFiltracja()" style=background:#FF00FF> Lista zadań  </a>
-  <a href="#" class="btn btn-primary" ng-click="ZatwierdzoneFiltracja()"style=background:#FF00FF> Zatwierdzone  </a>
-  <a href="#" class="btn btn-primary" ng-click="DoZrobieniaFiltracja()"style=background:#FF00FF>Do zrobienia</a>
+  <a href="#" class="btn btn-primary" ng-click="ListazadanFiltracja()" style=background:#FF99CC> Lista zadań  </a>
+  <a href="#" class="btn btn-primary" ng-click="ZatwierdzoneFiltracja()"style=background:#FF99CC> Zatwierdzone  </a>
+  <a href="#" class="btn btn-primary" ng-click="DoZrobieniaFiltracja()"style=background:#FF99CC>Do zrobienia</a>
   
     </div>
 </div>
@@ -27,7 +40,7 @@
 
      <div ng-show="wszystkie">
       <ul class="list-group" >
-        <li class="list-group-item clearfix task" ng-repeat="message in lista" > 
+        <li class="list-group-item clearfix task" ng-repeat="message in lista | filter: {Email : FiltrEmail}" > 
           <p class="lead">{{message.Tresc}}</p>
            <div>
              <div ng-show="message.Email == emailwer">
@@ -48,7 +61,7 @@
     <div ng-show="dowykonania">
       
         <ul class="list-group">
-        <li class="list-group-item clearfix task" ng-repeat="message in lista  | filter : { Status : 'w realizacji' }" > 
+        <li class="list-group-item clearfix task" ng-repeat="message in lista | filter: {Email : FiltrEmail} | filter : { Status : 'w realizacji' }" > 
           <p class="lead">{{message.Tresc }}</p>
           <div>
             <div ng-show="message.Email == emailwer">
@@ -69,7 +82,7 @@
     <div ng-show="zrobione">
       
         <ul class="list-group">
-        <li class="list-group-item clearfix task" ng-repeat="message in lista  | filter : { Status : 'Wykonane' }" > 
+        <li class="list-group-item clearfix task" ng-repeat="message in lista  | filter: {Email : FiltrEmail}  | filter : { Status : 'Wykonane' }" > 
           <p class="lead">{{message.Tresc }}</p>
           <div>
             <div ng-show="message.Email == emailwer">
@@ -87,3 +100,7 @@
 
     </div>
 </div>
+
+
+  </ng-view>
+</body>
