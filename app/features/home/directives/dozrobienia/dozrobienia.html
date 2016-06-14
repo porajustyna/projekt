@@ -3,47 +3,58 @@
   <ng-view>
     
          
-     
          
    <div ng-show="sprmail==true">
        <div style="padding-left: 2.8cm; padding-right:17.8cm">
          <div class="btn-group btn-group-justified">
           <a href="#" class="btn btn-primary" ng-click="Mojezad()" style=background:#00FFCC> Moje zdania  </a>
           <a href="#" class="btn btn-primary" ng-click="Zadaniawszy()"style=background:#00FFCC> Zadania wszystkich  </a>
+  </div>
       </div>
-      </div>
-</div>
+         </div>
+         
+         
          
          
      <div style="padding-left: 2.8cm; padding-right:17.8cm">      
- <div class="btn-group btn-group-justified">
+        <div class="btn-group btn-group-justified">
   <a href="#" class="btn btn-primary" ng-click="ListazadanFiltracja()" style=background:#FF99CC> Lista zadań ({{(lista | filter: {Email : FiltrEmail}).length }})  </a>
   <a href="#" class="btn btn-primary" ng-click="ZatwierdzoneFiltracja()"style=background:#FF99CC> Zatwierdzone ({{(lista | filter: {Email : FiltrEmail} | filter : { Status : "Wykonane" }).length }}) </a>
   <a href="#" class="btn btn-primary" ng-click="DoZrobieniaFiltracja()"style=background:#FF99CC>Do zrobienia ({{(lista | filter: {Email : FiltrEmail} | filter : { Status : "w realizacji" }).length }})</a>
   
     </div>
-</div>
+        </div>
+
+
 
   <ng-view>
+      
     <div class="container" ng-controller="HomeController">
       <div class="col-md-6 well text-center">
         <div class="form">
           <div class="input-group">
-            <input type="text" class="form-control" ng-model="task" placeholder="Zadanie do wykonania" style="text-align: center" >
-            <span class="input-group-btn">
-            <button class="btn btn-default" type="button" ng-click="dodajtaska()"><span
+              
+               <input type="text" class="form-control" ng-model="task" placeholder="Zadanie do wykonania" style="text-align: center" >
+               <span class="input-group-btn">
+               <button class="btn btn-default" type="button" ng-click="dodajtaska()"><span
            
-              class="glyphicon glyphicon-ok"></span> Dodaj</button>
+              
+               class="glyphicon glyphicon-ok"></span> Dodaj</button>
+             
             </span>
           </div>
-</div>
+    </div>
+
+
+
+
 
      <div ng-show="wszystkie">
-      <ul class="list-group" >
-        <li class="list-group-item clearfix task" ng-repeat="message in lista | filter: {Email : FiltrEmail}" > 
-          <p class="lead">{{message.Tresc}}</p>
-           <div>
-             <div ng-show="message.Email == emailwer">
+        <ul class="list-group" >
+          <li class="list-group-item clearfix task" ng-repeat="message in lista | filter: {Email : FiltrEmail}" > 
+             <p class="lead">{{message.Tresc}}</p>
+       <div>
+          <div ng-show="message.Email == emailwer">
                <span class="pull-right">
                <button class="btn btn-primary btn-xs" ng-show="message.Status != 'Wykonane'" ng-click="doneTask(message)" ><span class="glyphicon glyphicon-ok-sign" 
                ></span></button>
@@ -52,13 +63,18 @@
                </span>
             </div>
          </div>
+         
         <p class="lead"  style ="font-size:110%;"> {{message.Email}} <span class="glyphicon glyphicon-star"></span> {{message.Status}} </p>
         </li>
        </ul>
        </div>
        
        
-    <div ng-show="dowykonania">
+       
+       
+       
+       
+  <div ng-show="dowykonania">
       
         <ul class="list-group">
         <li class="list-group-item clearfix task" ng-repeat="message in lista | filter: {Email : FiltrEmail} | filter : { Status : 'w realizacji' }" > 
@@ -70,6 +86,7 @@
                 ></span></button>
                 <button class="btn btn-danger btn-xs" ng-click="deleteTask(message)"><span class="glyphicon glyphicon-trash" 
                 ></span></button>
+                
             </span>
             </div>
           </div>
@@ -77,6 +94,9 @@
         </li>
       </ul>
 </div>
+
+
+
 
 
     <div ng-show="zrobione">
@@ -98,8 +118,10 @@
 </div>
 
 
+
+
     </div>
-</div>
+         </div>
 
 
   </ng-view>

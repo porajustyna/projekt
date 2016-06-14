@@ -1,6 +1,7 @@
 export default class HomeController {
   constructor($scope, $firebaseArray, $rootScope) {
    var  ref = new Firebase("https://projektangular1.firebaseio.com/Zadania");
+
 $scope.lista = $firebaseArray (ref);
 
  $rootScope.sprmail = false;
@@ -11,6 +12,8 @@ $scope.lista = $firebaseArray (ref);
 $rootScope.zrobione = false;
 $rootScope.wszystkie = true;
 $rootScope.dowykonania = false;
+
+
 
 
 $scope.zalogujsie = function() {
@@ -25,10 +28,12 @@ else{
      $scope.emailwer=$scope.email;
     $rootScope.sprmail = true;
      
-    
 }
 
 };
+
+
+
 
 
 $scope.dodajtaska = function() {
@@ -49,6 +54,10 @@ else{
 
 };
 
+
+
+
+
 $scope.doneTask = function(message) {
 
             var ref = new Firebase('https://projektangular1.firebaseio.com/Zadania/' + message.$id)
@@ -57,17 +66,24 @@ $scope.doneTask = function(message) {
             });
 }
 
- $scope.deleteTask= function(message) {
+
+
+
+$scope.deleteTask= function(message) {
 $scope.lista.$remove(message)
 
-
 }
+
+
+
  $scope.ZatwierdzoneFiltracja = function() {
             $rootScope.zrobione = true
             $rootScope.wszystkie = false
             $rootScope.dowykonania = false
 
 };
+
+
 
  $scope.ListazadanFiltracja = function() {
             $rootScope.zrobione = false
@@ -78,6 +94,8 @@ $scope.lista.$remove(message)
 
 };
 
+
+
  $scope.DoZrobieniaFiltracja = function() {
             $rootScope.zrobione = false
             $rootScope.wszystkie = false
@@ -87,13 +105,20 @@ $scope.lista.$remove(message)
 
 };
 
+
  $scope.Mojezad = function() {
             $rootScope.FiltrEmail =$scope.email;
             
 };
 
+
+
+
  $scope.Zadaniawszy = function() {
             $rootScope.FiltrEmail = "";
 };
+
+
+
 }
 }
