@@ -17,9 +17,9 @@
          
      <div style="padding-left: 2.8cm; padding-right:17.8cm">      
  <div class="btn-group btn-group-justified">
-  <a href="#" class="btn btn-primary" ng-click="ListazadanFiltracja()" style=background:#FF99CC> Lista zadań  </a>
-  <a href="#" class="btn btn-primary" ng-click="ZatwierdzoneFiltracja()"style=background:#FF99CC> Zatwierdzone  </a>
-  <a href="#" class="btn btn-primary" ng-click="DoZrobieniaFiltracja()"style=background:#FF99CC>Do zrobienia</a>
+  <a href="#" class="btn btn-primary" ng-click="ListazadanFiltracja()" style=background:#FF99CC> Lista zadań ({{(lista | filter: {Email : FiltrEmail}).length }})  </a>
+  <a href="#" class="btn btn-primary" ng-click="ZatwierdzoneFiltracja()"style=background:#FF99CC> Zatwierdzone ({{(lista | filter: {Email : FiltrEmail} | filter : { Status : "Wykonane" }).length }}) </a>
+  <a href="#" class="btn btn-primary" ng-click="DoZrobieniaFiltracja()"style=background:#FF99CC>Do zrobienia ({{(lista | filter: {Email : FiltrEmail} | filter : { Status : "w realizacji" }).length }})</a>
   
     </div>
 </div>
